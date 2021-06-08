@@ -17,7 +17,7 @@
   
     function generate(sizes, letters){
       let ret = []
-      sizes.foreEach(s => {
+      sizes.forEach(s => {
         for(let i=1; i<s; i++){ // s==3なら3回繰り返すことを意図している。
           ret += letters[Math.floor(Math.random()*letters.length)]
         }
