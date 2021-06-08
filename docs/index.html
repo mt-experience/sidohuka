@@ -6,21 +6,26 @@
   'use strict'
   window.addEventListener("load", function(){
     const btn = document.getElementById("roll-button")
-    const resultArea = document.getElementById("result-text")
+    const resultArea = document.getElementById("result-area")
     btn.addEventListener("click", ()=>{
-      resultArea.value = generate(cond.sizes, cond.letters)
+      sizes = document.getElementById("sizes-area")
+          .split(',').map(c => parseInt(c, 10))
+          .filter(v => v) // NaN等の排除
+      letters = document.getElementById("letters-area")
+          .split("")
+      resultArea.value = generate(sizes, letters)
+      // 入力がまずかったのを気が付かせるために
+      document.getElementById("sizes-area").value = sizes
+      document.getElementById("letters-area").value = letters
     })
-    const cond = {
-      sizes: [3,3],
-      letters: ["シ","ド","フ","カ"],
-    }
-  
+    
     function generate(sizes, letters){
       let ret = []
       sizes.forEach(s => {
-        for(let i=1; i<s; i++){ // s==3なら3回繰り返すことを意図している。
+        for(let i=0; i<s; i++){ // s==3なら3回繰り返すことを意図している。
           ret += letters[Math.floor(Math.random()*letters.length)]
         }
+        ret += ["＝", "　", "☆", "・", "🐞"][Math.floor(Math.random()*5)] // 名前の区切り。全角幅？
       })
       return ret
     }
@@ -29,7 +34,12 @@
 
 </head>
 <body>
-  <textarea id="result-text" readonly></textarea>
+  カンマ区切りの文字数(例1  4,4 なら "シシシド=シシフカ")、(例2  3,1,2 なら "カカカ・シ フカ")。
+  <textarea id="sizes-area">3,3</textarea>
+  並べる文字。重複した文字は選出率が高くなる。
+  <textarea id="letters-area">シドフカ</textarea>
+  ＝　☆"・🐞
+  <textarea id="result-area" readonly></textarea>
   <br/>
   <button id="roll-button">回</button>
 </body>
