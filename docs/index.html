@@ -23,11 +23,12 @@
       let ret = []
       sizes.forEach(s => {
         for(let i=0; i<s; i++){
-          ret += letters[Math.floor(Math.random()*letters.length)]
+          ret.push(letters[Math.floor(Math.random()*letters.length)])
         }
-        ret += ["＝", "　", "☆", "・", "🐞", ""][Math.floor(Math.random()*6)] // 名前の区切り。全角幅？べた書き。
+        ret.push(["＝", "　", "☆", "・", "🐞", ""][Math.floor(Math.random()*6)]) // 名前の区切り。全角幅？べた書き。
       })
-      return ret.slice(0,-1) // 末尾に名前区切りがついてしまうので削除
+      ret.pop() // 末尾に名前区切りがついてしまうので削除
+      return ret.join("") // 絵文字を含む加工が終わったので文字列にする
     }
   })
 </script>
