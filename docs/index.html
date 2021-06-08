@@ -3,26 +3,28 @@
 <head>
 <title>シドフカ</title>
 <script>
-  //'use strict'
-  const btn = document.getElementById("roll-button")
-  const resultArea = document.getElementById("result-text")
-  btn.addEventListener("click", ()=>{
-    resultArea.value = generate(cond.sizes, cond.letters)
-  })
-  const cond = {
-    sizes: [3,3],
-    letters: ["シ","ド","フ","カ"],
-  }
-  
-  function generate(sizes, letters){
-    let ret = []
-    sizes.foreEach(s => {
-      for(let i=1; i<s; i++){ // s==3なら3回繰り返すことを意図している。
-        ret += letters[Math.floor(Math.random()*letters.length)]
-      }
+  'use strict'
+  window.addEventListener("load", function(){
+    const btn = document.getElementById("roll-button")
+    const resultArea = document.getElementById("result-text")
+    btn.addEventListener("click", ()=>{
+      resultArea.value = generate(cond.sizes, cond.letters)
     })
-    return ret
-  }
+    const cond = {
+      sizes: [3,3],
+      letters: ["シ","ド","フ","カ"],
+    }
+  
+    function generate(sizes, letters){
+      let ret = []
+      sizes.foreEach(s => {
+        for(let i=1; i<s; i++){ // s==3なら3回繰り返すことを意図している。
+          ret += letters[Math.floor(Math.random()*letters.length)]
+        }
+      })
+      return ret
+    }
+  })
 </script>
 
 </head>
