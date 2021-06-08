@@ -25,10 +25,9 @@
         for(let i=0; i<s; i++){
           ret += letters[Math.floor(Math.random()*letters.length)]
         }
-        ret += ["＝", "　", "☆", "・", "🐞"][Math.floor(Math.random()*5)] // 名前の区切り。全角幅？べた書き。
+        ret += ["＝", "　", "☆", "・", "🐞", ""][Math.floor(Math.random()*6)] // 名前の区切り。全角幅？べた書き。
       })
-      ret.slice(0,-1) // 末尾に名前区切りがついてしまうので削除
-      return ret
+      return ret.slice(0,-1) // 末尾に名前区切りがついてしまうので削除
     }
   })
 </script>
@@ -41,7 +40,7 @@
   並べる文字。重複した文字は選出率が高くなる。<br>
   <textarea id="letters-area">シドフカ</textarea><br>
   
-  各セクションは["＝", "　", "☆", "・", "🐞"]のいずれかでランダムに区切られる。<br>
+  各セクションは["＝", "　", "☆", "・", "🐞", ""]のいずれかでランダムに区切られる。<br>
   <textarea id="result-area" readonly></textarea><br>
   <button id="roll-button">回</button>
 </body>
