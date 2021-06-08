@@ -16,7 +16,7 @@
       resultArea.value = generate(sizes, letters)
       // 入力がまずかったのを気が付かせるために
       document.getElementById("sizes-area").value = sizes
-      document.getElementById("letters-area").value = letters
+      document.getElementById("letters-area").value = letters.join("") // 文字配列を文字列に変換
     })
     
     function generate(sizes, letters){
